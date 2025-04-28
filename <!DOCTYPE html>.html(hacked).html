@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacking In Progress...</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 20px;
+      padding: 20px;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #console {
+      white-space: pre-wrap;
+      width: 100%;
+      max-width: 800px;
+      height: 60vh;
+      overflow-y: auto;
+      border: 1px solid #00FF00;
+      padding: 15px;
+      font-size: 18px;
+    }
+    #alert {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 36px;
+      font-weight: bold;
+      color: red;
+      text-align: center;
+      display: none;
+      animation: flash 0.8s infinite alternate;
+    }
+    @keyframes flash {
+      from { opacity: 1; }
+      to { opacity: 0.3; }
+    }
+    #finalMessage {
+      display: none;
+      font-size: 32px;
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #pranked {
+      display: none;
+      font-size: 36px;
+      color: #FF6347;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="console"></div>
+<div id="alert">⚠️ SYSTEM BREACH DETECTED ⚠️</div>
+<div id="finalMessage">Hacking in progress... Please wait...</div>
+<div id="pranked">🎉 YOU'VE BEEN PRANKED BY KEWAL! 🎉</div>
+
+<script>
+const consoleElement = document.getElementById('console');
+const alertElement = document.getElementById('alert');
+const finalMessage = document.getElementById('finalMessage');
+const prankedMessage = document.getElementById('pranked');
+
+// Fake Hacking Commands
+const commands = [
+  "Initializing system scan...",
+  "Connecting to WiFi network...",
+  "Accessing device files...",
+  "Bypassing firewall...",
+  "Accessing front camera... 📸",
+  "Accessing camera feed...",
+  "Cracking device password...",
+  "Cracking password...",
+  "Password cracked successfully!",
+  "Stealing sensitive files...",
+  "Uploading files to cloud...",
+  "Disabling antivirus software...",
+  "Accessing private messages...",
+  "Fetching contacts...",
+  "Triggering system crash...",
+  "System crash triggered!",
+  "Uploading stolen data...",
+  "Operation complete!",
+  "WARNING: SYSTEM BREACH DETECTED"
+];
+
+let index = 0;
+
+// Function for frequent vibrations
+function triggerFrequentVibration() {
+  if (navigator.vibrate) {
+    navigator.vibrate([200, 200, 300, 300, 400, 400]);  // Frequent short vibrations
+  }
+}
+
+// Start typing the commands one by one
+function typeCommand() {
+  if (index < commands.length) {
+    consoleElement.innerHTML += commands[index] + "\n";
+    consoleElement.scrollTop = consoleElement.scrollHeight;  // Scroll down as text is typed
+    triggerFrequentVibration();  // Trigger frequent vibration
+    index++;
+    setTimeout(typeCommand, Math.random() * 800 + 500); // Random typing speed
+  } else {
+    showBreachAlert();
+  }
+}
+
+// Show SYSTEM BREACH alert after commands are done
+function showBreachAlert() {
+  setTimeout(() => {
+    finalMessage.style.display = "none"; // Hide hacking message
+    alertElement.style.display = "block"; // Show breach alert
+    triggerVibration();
+    setTimeout(showPrankMessage, 4000); // Show prank message after a delay
+  }, 1500);
+}
+
+// Trigger phone vibration for mobile devices
+function triggerVibration() {
+  if (navigator.vibrate) {
+    navigator.vibrate([500, 300, 500, 300, 1000]);  // Longer vibration after breach
+  }
+}
+
+// Show prank message after system breach alert
+function showPrankMessage() {
+  alertElement.style.display = "none";  // Hide breach alert
+  prankedMessage.style.display = "block";  // Show prank message
+}
+
+// Start typing commands on page load
+finalMessage.style.display = "block";  // Show initial "hacking in progress..." message
+typeCommand();
+</script>
+
+</body>
+</html>
